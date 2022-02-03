@@ -1,0 +1,28 @@
+#include <stdio.h>
+
+int main(){
+  int i=0;
+  int x;
+  int a=0;
+  int y[6];
+
+  for (i=0;i<=5;i++){
+   printf("Digite um valor numérico para armazenar na posicao %d: ", i+1);
+   scanf("%d",&y[i]);
+  }
+   printf("Digite o valor que deseja procurar no vetor: ");
+   scanf("%d",&x);
+
+   for (i=0;i<=5;i++)
+    {
+     if (x==y[i])
+      printf("O valor foi encontrado: %d \n A posição do valor é a %d.",y[i], i+1);
+     else
+      a=a+1;
+     }
+   
+    if (a>=6)
+     printf("\nO valor não foi encontrado.");
+
+   return (0);
+ }
