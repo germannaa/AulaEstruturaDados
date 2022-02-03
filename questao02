@@ -1,0 +1,16 @@
+#include <stdio.h>
+
+int main() {
+	int n=0, soma=0, i=0;
+  
+  printf ("Digite a quantidade de numeros inteiros positivos que deseja obter a soma.\n Obs. A soma vai iniciar do valor 0 até o valor digitado.\n");
+  scanf ("%d", &n);
+
+  for (i=1; i<n; i++){
+  soma=soma+i;
+}
+
+printf ("A soma eh de %d\n", soma);
+
+	return 0;
+}
