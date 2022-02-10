@@ -1,0 +1,21 @@
+#include <stdio.h>
+
+int potencia (int a, int n){
+  if (n==0){
+    return 1;
+  }
+  else{
+    return a*potencia(a, n-1);
+  }
+}
+
+int main(void) {
+  int a=0, n=0;
+
+  printf("Digite um valor 'a' para ser a potencia de 'n' :\n");
+  scanf("%d%d", &a, &n);
+  
+  printf("O resultado de %d elevado a %d é de: %d. \n", a, n, potencia(a,n));
+  
+    return 0;
+}
