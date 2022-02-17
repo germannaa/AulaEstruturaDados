@@ -1,0 +1,26 @@
+#include <stdio.h>
+
+int quadradoperfeito (int n, int quadrado, int i, int somaquad){
+
+    if (n==0){
+        return 0;
+    }
+    else {
+        for (i=1; i<=n; i++){
+          quadrado = i*i;
+          somaquad = somaquad + quadrado;
+          
+        }
+        return somaquad;
+    }}
+
+int main(void){
+  int n=0, quadrado=0, i=0, somaquad=0;
+
+  printf("Digite um numero para se obter a soma dos quadrados perfeitos até ele:\n");
+  scanf("%d",&n);
+
+  printf("Resultado dos quadrados perfeitos até %d é: %d \n", n,quadradoperfeito(n, quadrado, i, somaquad));
+
+    return 0;
+}
