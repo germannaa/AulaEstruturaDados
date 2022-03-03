@@ -1,0 +1,91 @@
+#include <stdio.h>
+
+#define maximo 20
+
+
+   int obterOpcao(void) // Menu para escolher a opção
+   {
+       int opcao;
+       printf("MENU\n");
+       printf("1 - Empilhar\n");
+       printf("2 - Desempilhar\n");
+       printf("3 - Mostrar\n");
+       printf("0 - Finalizar\n");
+       printf("Opcao: ");
+       scanf("%d", &opcao);
+       printf("\n");
+     return opcao;
+   }
+
+   int vazia(int proxTopo) //testa se a pilha está vazia
+   {
+      return proxTopo == 0; // retorna 1 se a pilha estiver vazia
+   }
+
+   int cheia(int proxTopo) // testa se a pilha está cheia
+   {
+       return proxTopo == maximo; // retorna 1 para igualdade verdadeira(pilha cheia) e 0 para igualdade falsa
+   }
+
+   int empilhar(int valor, int *pProxTopo, int pilha[])
+   {
+      if (cheia(*pProxTopo)) return 0; // retorna 0 para pilha cheia
+       else
+       {
+           pilha[(*pProxTopo)++] = valor; //coloca o valor no vetor da pilha
+           return 1;
+       }
+   }
+
+   int desempilhar(int *valor, int *pProxTopo, int pilha[]) //retira o elemento do topo
+   {
+       if (vazia(*pProxTopo)) return 0;
+       else
+       {
+           *valor = pilha[--(*pProxTopo)];// pilha não vazia, retira o elemento do topo
+           return 1;
+       }
+   }
+
+   int listar(int proxTopo, int pilha[]) // mostra os elementos da pilha
+   {
+      if (vazia(proxTopo)) return 0;
+       else
+      {
+        printf("\n");
+           while (proxTopo > 0)
+           {
+               proxTopo--;
+               printf("%03d [%6d]\n", proxTopo + 1, pilha[proxTopo]);
+           }
+           return 1;
+       }
+   }
+
+   int main(void)
+   {
+      int opcao, pilha[maximo], proxTopo = 0, valor; //define tipo e valores iniciais de variáveis
+       while ((opcao = obterOpcao()) != 0) // Chama função obteropção, enquanto opção diferente de finalizar
+       {
+           switch (opcao)
+           {
+          case 1:
+               printf("Valor a ser empilhado: ");
+               scanf("%d", &valor);
+               if (empilhar(valor, &proxTopo, pilha)) // chama a função empilhar com o valor, o local(proxTopo) onde será empilhado no vetor pilha
+                   printf("Valor empilhado na  %dº posição da pilha \n\n", proxTopo);
+               else printf("Pilha cheia.\n\n");
+               break;
+           case 2:
+               if (desempilhar(&valor, &proxTopo, pilha)) // chama a função desempilhar para tirar o elemento do topo da pilha
+                   printf("Valor %d desempilhado\n", valor);
+              else printf("Pilha vazia.\n\n");
+              break;
+           case 3:
+               if (listar(proxTopo, pilha)) printf("\n"); // mostra os elementos da pilha
+               else printf("Pilha vazia.\n\n");
+               break;
+           }
+       }
+       return 0;
+   }
