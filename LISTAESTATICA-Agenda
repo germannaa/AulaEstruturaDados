@@ -1,0 +1,99 @@
+#include <stdio.h>
+#include <string.h>
+#define TAMMAX 10
+
+// Lista Estatica - AGENDA
+
+typedef struct{
+  char nome[50];
+  char email[50];
+  char telefone[50];
+  char redesocial[100];
+} Contato;
+
+Contato Agenda[TAMMAX];
+int elementoAtual = 0;
+
+void inserir(Contato novo) {
+  if (elementoAtual < TAMMAX){
+      Agenda[elementoAtual] = novo;
+    elementoAtual +=1;
+  }
+  else{
+    printf("Lista Cheia ;/\n");
+  }
+}
+//_________________________________________________
+  
+void imprimir(){
+  for(int i=0;i<elementoAtual;i++){
+    
+    printf("\n\nNome:%s\n", Agenda[i].nome);
+    printf("Email::%s\n", Agenda[i].email);
+    printf("Telefone:%s\n", Agenda[i].telefone);
+    printf("Rede Social:%s\n", Agenda[i].redesocial);
+    printf("***********************\n\n\n");
+  }
+}
+//____________________________________________________
+void excluir(char nomeExcluir[50]){
+ // Excluir contato
+  for (int i=0;i<elementoAtual; i++){
+    if (strcmp(Agenda[i].nome, nomeExcluir) == 0){
+      //Excluindo o contato encontrado
+      for (int j = i+1; j<elementoAtual; j++){
+        Agenda[j-1] = Agenda[j];
+      }
+      elementoAtual -= 1; //atualizando a quantidade de elementos da agenda...
+      break;
+    }
+  }
+  printf("Contato Excluido\n\n\n\n");
+}
+
+int main(void) {
+int opcao;
+Contato x; // a ser utilizado para inserir novo contato
+char nomeExcluir[30];
+  
+  printf("Digite: \n-> 1 para inserir:\n-> 2 para imprimir:\n-> 3 para excluir:\n-> 5 para SAIR....\n");
+  scanf("%d", &opcao);
+
+  
+  while (opcao!= 5){
+    switch(opcao){
+      case 1: 
+        //inserindo novo contato
+        printf("Digite o nome:\n");
+        scanf("%s", x.nome); 
+        printf("Digite o email:\n");
+        scanf("%s", x.email);
+        printf("Digite o telefone:\n");
+        scanf("%s", x.telefone);
+        printf("Digite o link da rede social:\n");
+        scanf("%s", x.redesocial);
+        inserir(x);
+      break;
+
+      case 2:
+      imprimir();
+      break;
+
+      case 3:
+        printf("Digite o nome do contato a ser excluido:\n");
+        scanf("%s", nomeExcluir);
+      excluir(nomeExcluir);
+      break;
+      
+      default:
+      printf ("Opcao invalida!!!\n");
+    }
+
+    
+    printf("Digite: \n-> 1 para inserir:\n-> 2 para imprimir:\n-> 3 para excluir:\n-> 5 para SAIR....\n");
+  scanf("%d", &opcao);
+    }
+
+  
+  return 0;
+}
