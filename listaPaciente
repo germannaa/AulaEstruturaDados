@@ -1,0 +1,111 @@
+#include <stdio.h>
+
+
+//Implemente um programa em C com funções para enfileirar, desenfileirar e exibir os pacientes de uma fila. Esse paciente deve ter um código, nome, data de nascimento e um telefone. Valide a data inserida.
+
+typedef struct {
+int cod[3];
+char nome[100];
+char datanasc[20];
+int telefone[20];
+}contatos;
+
+
+
+
+int main(void){
+  int n = 0;   //Numero de contatos cadastrados, inicialmente vzio.
+  int opc; //Opcao do menu selecionada.
+  int i;
+	char nomeExcluir[30];
+	contatos pacientes[5];
+	int elementoAtual = 0;
+	
+		do{
+    //Exibe o menu de opcoes.
+    printf("\n---- Menu ----\n");
+    printf("1 - Cadastrar paciente\n");
+    printf("2 - Exibir paciente\n");
+    printf("3 - Eliminar paciente\n");
+    printf("4 - Sair do sistema\n\n");
+    printf("Escolha uma opcao:\n");
+    //Le a opcao selecionada.
+    scanf("%d",&opc);
+
+			if (opc<5){
+			
+	switch(opc){
+		case 1:
+      //Inserir novo paciente no final.
+    	//if (n<=5){
+			
+      printf("Digite o nome do paciente: \n");
+      scanf(" %s",&pacientes[n].nome);
+			printf("Digite a data de nascimento do paciente: (dd/mm/aa)\n");
+      scanf(" %s",&pacientes[n].datanasc);
+      printf("Digite o telefone: (000000000)\n");
+      scanf("%d",&pacientes[n].telefone);
+       //Incrementa numero de registros cadastrados.
+				n++; //Incrementa numero de registros cadastrados.
+			//} else{
+				//printf("Lista cheia!");
+			//
+			break;
+		
+		case 2:
+      //Exibe todos contatos cadastrados.
+      for(i=0; i<n; i++){
+	    	printf("Codigo = %d\n",i+1);
+        printf("Nome: %s\n",pacientes[i].nome);
+        printf("Data de nascimento: %s\n",pacientes[i].datanasc);
+	   		printf("Telefone: %d\n",pacientes[i].telefone);
+
+	    printf("\n");
+      }
+				
+				break;
+			
+		case 3:
+      for (int i=0;i<elementoAtual; i++){
+    if (strcmp(pacientes[i].nome, nomeExcluir) == 0){
+      //Excluindo o contato encontrado
+      for (int j = i+1; j<elementoAtual; j++){
+       pacientes[j-1] = pacientes[j];
+      }
+      elementoAtual -= 1; //atualizando a quantidade de elementos da agenda...
+      
+    }
+  }
+			
+  printf("Contato Excluido\n\n\n\n");
+
+break;
+				
+    //Enquanto a opcao de saida nao for escolhida,  continua mostrando menu.
+		
+	//case 4:
+  //Libera a memoria alocada do vetor.
+//free(contatos);
+
+	
+	
+	default:
+			printf("Opcao invalida!");
+			break;
+
+  return 0;
+}
+	}}
+			while(opc>5);
+	//Exibe o menu de opcoes.
+    printf("\n---- Menu ----\n");
+    printf("1 - Cadastrar paciente\n");
+    printf("2 - Exibir paciente\n");
+    printf("3 - Eliminar paciente\n");
+    printf("4 - Sair do sistema\n\n");
+    printf("Escolha uma opcao:\n");
+    //Le a opcao selecionada.
+    scanf("%d",&opc);
+			
+	}
+			
