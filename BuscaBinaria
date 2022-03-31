@@ -1,0 +1,73 @@
+#include <stdio.h>
+
+	int main(void) {
+		
+int v[10];
+		
+int inicio, fim, meio, controle_pesquisa, pesquisa, tamanho_vetor, valor;
+inicio = 0;
+fim = tamanho_vetor - 1;
+
+		printf("Digite o tamanho que vc deseja o vetor: \n ");
+            scanf("%d", &tamanho_vetor);
+		
+		for (int i = 0; i < tamanho_vetor; i++){
+            printf("Digite a posicao %d do vetor: ", i+1);
+            scanf("%d", &valor);
+            v[i] = valor;
+        }
+        
+        
+		printf("Escolha um numero para procurar no vetor:");
+	scanf("%d", &pesquisa);
+
+		
+        while (inicio <= fim)
+        {
+              
+              meio = (inicio + fim) / 2;
+              
+              if (pesquisa == v[meio])
+              {
+                 controle_pesquisa = 0;
+                 break;
+              }
+              
+              
+              else if (pesquisa < v[meio])
+              {
+                 fim = meio - 1;
+                 continue;
+              }
+              
+              
+              else if(pesquisa > v[meio])
+              {
+                 inicio = meio + 1;
+                 continue;
+              }
+              
+             
+              else
+              {
+                 controle_pesquisa = 1;
+                 break;
+              }
+              
+        }
+        
+        
+        if (controle_pesquisa == 0){
+           printf("\nElemento %d encontrado!\n Posicao: %d - Valor: %d", pesquisa, meio+1, v[meio]);                      
+        } else {
+           printf("Elemento %d nao encontrado!", pesquisa);
+        }
+
+        return (0);
+        
+    }
+    
+
+
+ 
+	
