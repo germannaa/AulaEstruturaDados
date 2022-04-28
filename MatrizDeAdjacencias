@@ -43,3 +43,7 @@ printf("\n");
 system("pause");
 return 0;
 	}
+	
+	
+//Link para estudo
+//http://www.facom.ufu.br/~madriana/ED2/roteirolab1.pdf
