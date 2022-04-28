@@ -1,0 +1,45 @@
+#include <stdio.h>
+#define NMAX 101
+
+
+int main() {
+ int n, i, j, x, y;
+int g[NMAX][NMAX]; // matriz estática 101 x 101
+ printf("Informe o tamanho da matriz (N x N): ");
+ scanf("%d",&n);
+ printf("OK. Tamanho da matriz: %d \n",n);
+
+for (i=0; i<n; i++) {
+for (j=0; j<n; j++) {
+g[i][j]=0;
+}
+}
+ printf("\nMatriz Inicial: \n");
+ for (i=0; i<n; i++) {
+for (j=0; j<n; j++) {
+printf("[%d][%d]= %d \t",i,j,g[i][j]);
+}
+printf("\n");
+}
+ printf("\nInforme os arcos: (-1) para encerrar\n");
+ printf("\nVertice de partida: ");
+ scanf("%d",&x);
+ while (x != -1){
+ printf("\nVertice de chegada: ");
+ scanf("%d",&y);
+ g[x][y] = 1;
+ g[y][x] = 1;
+ printf("\nVertice de partida: ");
+ scanf("%d",&x);
+ }
+
+ printf("\nMatriz Final: \n");
+ for (i=0; i<n; i++) {
+for (j=0; j<n; j++) {
+printf("[%d][%d]= %d \t",i,j,g[i][j]);
+}
+printf("\n");
+}
+system("pause");
+return 0;
+	}
