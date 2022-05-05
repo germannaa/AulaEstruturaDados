@@ -1,0 +1,41 @@
+// pesquisa sequencial
+
+#include <stdio.h>
+
+
+int pesquisaSequencial (int tab[], int arg)
+{
+int  n = 0;
+
+int tam = sizeof(tab) + 1 ;
+
+//while (n <= (sizeof(tab)))
+while (n < tam)
+ {
+		if (tab[n] == arg) return n;
+		else n = n + 1;
+}
+
+return -1 ; // valor nao encontrado
+}
+
+
+int main (void)
+{
+int a[5];
+int i, x;
+
+
+for (i=0; i < 5; i++)
+{
+printf("Entre com o valor de n[%d]=", i);
+scanf("%d", &a[i]);
+}
+
+printf("\nEntre com o valor a ser pesquisado = ");
+scanf("%d", &x);
+
+printf("valor encontrado no indice = %d\n", pesquisaSequencial(a,x) );
+
+return 0;
+}
